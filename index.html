@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memer TV</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1a4a;--bg2:#0d2468;--blue:#2f6bff;--light:#8fb4ff;--dark:#061033;--white:#eaf1ff;--px:6px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Press Start 2P",monospace;background:var(--bg);color:var(--white);min-height:100vh;
+ background-image:linear-gradient(var(--bg2) 2px,transparent 2px),linear-gradient(90deg,var(--bg2) 2px,transparent 2px);
+ background-size:24px 24px;image-rendering:pixelated}
+header{text-align:center;padding:28px 12px 8px}
+h1{font-size:clamp(22px,5vw,44px);color:var(--white);text-shadow:var(--px) var(--px) 0 var(--blue),calc(var(--px)*2) calc(var(--px)*2) 0 var(--dark)}
+.sub{margin-top:18px;font-size:clamp(8px,1.6vw,11px);color:var(--light);line-height:1.8}
+main{display:flex;gap:28px;justify-content:center;align-items:flex-start;padding:24px 16px 48px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.tv-wrap{flex:1 1 640px;max-width:820px;position:relative;padding-top:60px}
+.antenna{position:absolute;top:0;left:50%;width:120px;height:64px;transform:translateX(-50%)}
+.antenna i{position:absolute;bottom:0;width:var(--px);height:60px;background:var(--light)}
+.antenna i:nth-child(1){left:20px;transform:rotate(-28deg);transform-origin:bottom}
+.antenna i:nth-child(2){right:20px;transform:rotate(28deg);transform-origin:bottom}
+.antenna b{position:absolute;bottom:-6px;left:40px;width:40px;height:18px;background:var(--blue);box-shadow:0 0 0 var(--px) var(--dark)}
+.tv{background:var(--blue);padding:22px;display:flex;gap:18px;
+ box-shadow:0 0 0 var(--px) var(--dark),inset var(--px) var(--px) 0 var(--light),inset calc(var(--px)*-1) calc(var(--px)*-1) 0 #1a47c4,12px 12px 0 var(--px) var(--dark)}
+.screen-frame{flex:1;background:var(--dark);padding:12px;box-shadow:inset 0 0 0 var(--px) #000}
+.screen{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+#player-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#player-slot iframe,#player-slot video{width:100%;height:100%;border:0}
+.placeholder{text-align:center;padding:12px;font-size:clamp(8px,1.5vw,12px);line-height:2;color:var(--light)}
+.screen::after{content:"";position:absolute;inset:0;pointer-events:none;
+ background:repeating-linear-gradient(transparent 0 3px,rgba(0,0,0,.12) 3px 4px)}
+.controls{width:64px;display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:6px}
+.knob{width:36px;height:36px;background:var(--light);box-shadow:0 0 0 4px var(--dark),inset -6px -6px 0 #5f8be0}
+.knob.s{width:28px;height:28px}
+.grille{width:40px;height:56px;background:repeating-linear-gradient(var(--dark) 0 4px,transparent 4px 10px);margin-top:auto}
+.led{width:10px;height:10px;background:#5cff8a;box-shadow:0 0 0 3px var(--dark)}
+.legs{display:flex;justify-content:space-between;padding:0 60px}
+.legs i{width:36px;height:28px;background:var(--dark)}
+aside{flex:0 1 260px;width:100%;max-width:300px;background:var(--dark);padding:20px;
+ box-shadow:0 0 0 var(--px) var(--blue),10px 10px 0 var(--px) #000;margin-top:60px}
+aside h2{font-size:12px;line-height:1.6;color:var(--light);margin-bottom:18px;text-align:center}
+.btn{display:block;text-align:center;text-decoration:none;color:var(--white);background:var(--blue);
+ font-family:inherit;font-size:10px;line-height:1.7;padding:16px 10px;margin-bottom:18px;
+ box-shadow:0 0 0 4px #000,inset 4px 4px 0 var(--light),inset -4px -4px 0 #1a47c4;transition:transform .1s}
+.btn:hover{transform:translate(2px,2px);background:#4a80ff}
+.btn:active{transform:translate(4px,4px)}
+.btn.support{background:#e8a317;color:#1a1200;box-shadow:0 0 0 4px #000,inset 4px 4px 0 #ffd36b,inset -4px -4px 0 #b57a00}
+.btn.support:hover{background:#f5b52e}
+.note{font-size:8px;line-height:1.9;color:var(--light);text-align:center}
+footer{text-align:center;font-size:8px;color:var(--light);padding:0 12px 28px}
+@media(max-width:700px){.tv{padding:12px;gap:8px}.controls{width:34px}.knob{width:24px;height:24px}.knob.s{width:18px;height:18px}.grille{width:24px}.antenna{transform:translateX(-50%) scale(.7)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>MEMER TV</h1>
+  <p class="sub"></p>
+</header>
+
+<main>
+  <section class="tv-wrap" aria-label="Телевизор">
+    <div class="antenna"><i></i><i></i><b></b></div>
+    <div class="tv">
+      <div class="screen-frame">
+        <div class="screen">
+          <!-- ВСТАВЬТЕ ВАШ ПЛЕЕР СЮДА: замените содержимое #player-slot на код плеера (iframe или video) -->
+          <div id="player-slot">
+            <iframe src="https://navigator-mumbai-trials-jesus.trycloudflare.com/memer/" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="led"></div>
+        <div class="knob"></div>
+        <div class="knob s"></div>
+        <div class="grille"></div>
+      </div>
+    </div>
+    <div class="legs"><i></i><i></i></div>
+  </section>
+
+  <aside>
+    <h2>МЕНЮ</h2>
+    <!-- Замените # на ваши ссылки -->
+    <a class="btn" href="https://youtube.com/@flanixtech?si=5kpsW11cKWpv2ECz" rel="noopener">YOUTUBE<br>АВТОРА</a>
+    <a class="btn support" href="https://www.donationalerts.com/r/flanixtech" target="_blank" rel="noopener">ПОДДЕРЖАТЬ<br>ПРОЕКТ</a>
+    <p class="note">Ваша поддержка помогает развивать канал.</p>
+  </aside>
+</main>
+
+<footer>MEMER TV</footer>
+</body>
+</html>
